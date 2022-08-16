@@ -1,5 +1,6 @@
 - [x] Add project layout
 - [x] Add necessary dependancies
-- [ ] Deploy on vercel
+- [x] Deploy on vercel
+- [x] Add materialUI support
 - [ ] Add new home layout
 - [ ] Add routes
