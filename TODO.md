@@ -1,5 +1,5 @@
 - [x] Add project layout
-- [ ] Add necessary dependancies
+- [x] Add necessary dependancies
 - [ ] Deploy on vercel
 - [ ] Add new home layout
 - [ ] Add routes
