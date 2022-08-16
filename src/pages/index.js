@@ -6,8 +6,9 @@ export default function Home() {
     <>
       <Head>
         <title>Qafilaty Clone</title>
-        <meta name="description" content="Qafilaty crud app clone" />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Qafilaty crud app clone" />
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <h1>Hi</h1>
     </>
