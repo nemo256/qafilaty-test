@@ -1,0 +1,9 @@
+{
+  "name": "qafilaty-test",
+  "version": "1.0.0",
+  "description": "Qafilaty crud app clone",
+  "main": "index.js",
+  "repository": "qafilaty-test.vercel.app",
+  "author": "Amine Neggazi",
+  "license": "MIT"
+}
