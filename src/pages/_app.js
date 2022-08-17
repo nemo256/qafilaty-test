@@ -1,15 +1,16 @@
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
+import Layout from '../components/layouts/Layout'
 import theme from '../theme'
 
 
-export default function MyApp(props) {
-  const { Component, pageProps } = props
-
+export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ThemeProvider>
   )
 }

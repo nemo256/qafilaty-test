@@ -1,7 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Layout from '../components/layouts/Layout'
 
-export default function Home() {
+
+export default function Index({ children }) {
   return (
     <>
       <Head>
@@ -10,7 +11,9 @@ export default function Home() {
         <meta name="description" content="Qafilaty crud app clone" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <h1>Hi</h1>
+      <Layout>
+        { children }
+      </Layout>
     </>
   )
 }
