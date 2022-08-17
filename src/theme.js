@@ -8,7 +8,7 @@ const theme = createTheme({
       main: '#ffffff',
     },
     secondary: {
-      main: '#dddddd',
+      main: '#eeeeee',
     },
   },
 })

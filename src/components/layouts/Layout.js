@@ -1,7 +1,7 @@
 import {
   Stack
 } from '@mui/material'
-import Navbar from './Navbar'
+import Bar from './Bar'
 import Footer from './Footer'
 
 
@@ -15,7 +15,7 @@ export default function Layout({ children }) {
         minHeight: '100vh'
       }}
     >
-      <Navbar />
+      <Bar />
       { children }
       <Footer />
     </Stack>

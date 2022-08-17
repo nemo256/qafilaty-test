@@ -2,6 +2,7 @@
 - [x] Add necessary dependancies
 - [x] Deploy on vercel
 - [x] Add materialUI support
-- [ ] Add layout, navbar and footer
+- [x] Add layout, navbar and footer
 - [ ] Add new home layout
 - [ ] Add routes
+- [ ] Update everything for mobile (responsive approach)
