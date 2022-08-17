@@ -145,6 +145,7 @@ export default function Bar() {
       }}
     >
     <AppBar 
+      elevation={0}
       position="fixed"
       sx={{
         backgroundColor: '#FFFFFF',
@@ -269,7 +270,7 @@ export default function Bar() {
         </Tooltip>
         <List>
           <ListItem sx={{ mt: 4, justifyContent: 'center' }}>
-            <Stack direction="column" spacing={1}>
+            <Stack direction="column" spacing={2}>
               <ListItemButton>
                 <Link href="/">
                   <HomeOutlinedIcon />
