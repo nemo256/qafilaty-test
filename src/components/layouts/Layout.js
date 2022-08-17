@@ -8,7 +8,6 @@ import Footer from './Footer'
 export default function Layout({ children }) {
   return (
     <Stack 
-      spacing={1}
       sx={{
         height: 1,
         width: 1,

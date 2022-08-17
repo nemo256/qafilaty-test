@@ -3,6 +3,7 @@
 - [x] Deploy on vercel
 - [x] Add materialUI support
 - [x] Add layout, navbar and footer
+- [x] Fix Navbar and Sidebar
 - [ ] Add new home layout
 - [ ] Add routes
 - [ ] Update everything for mobile (responsive approach)
