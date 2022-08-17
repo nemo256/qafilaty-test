@@ -250,7 +250,10 @@ export default function Bar() {
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
+            borderWidth: 0,
           },
+          border: 'none',
+          borderWidth: 0,
           display: { xs: 'none', md: 'flex' }
         }}
         variant="permanent"
