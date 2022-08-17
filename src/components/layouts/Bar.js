@@ -256,12 +256,12 @@ export default function Bar() {
         anchor="right"
       >
         <Tooltip title="Qafilaty">
-          <IconButton sx={{ p: 0, mt: 3 }}>
+          <IconButton sx={{ p: 0, mt: 1 }}>
             <Avatar 
               alt="Profile name"
               src="/logo.png" 
               sx={{
-                width: 58,
+                width: 56,
                 height: 52,
               }}
             />
