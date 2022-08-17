@@ -32,9 +32,6 @@ const drawerWidth = 60;
 const AppBarStyled = styled("div")(({ theme }) => ({
   position: "fixed",
   backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
   marginLeft: 0,
   width: "90%",
   minWidth: "90%",
