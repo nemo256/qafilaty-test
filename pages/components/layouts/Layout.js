@@ -5,7 +5,6 @@ import {
   Box
 } from '@mui/material'
 import Bar from './Bar'
-import Footer from './Footer'
 
 
 export default function Layout({ children }) {
@@ -41,7 +40,6 @@ export default function Layout({ children }) {
         >
           { children }
         </Box>
-        <Footer />
       </Stack>
     </>
   )
