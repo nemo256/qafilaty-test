@@ -118,7 +118,7 @@ export default function Main() {
         sx={{
           width: { xs: '90%', sm: '95%', md: 'auto' },
           ml: 2,
-          mt: 4,
+          mt: { xs: 2, sm: 3, md: 4 },
           backgroundColor: '#7D749E',
           '&:hover': {
             backgroundColor: '#884FAA'
