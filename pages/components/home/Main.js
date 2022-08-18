@@ -66,7 +66,7 @@ const shipments = [
   },
   {
     'id': 'qaf-2n3d231k',
-    'name': 'Dahmane Chekima',
+    'name': 'Aissa Chekima',
     'address': 'Sidi belabbes',
     'state': 'Done',
     'date': 'xx-xx-xxxx',
@@ -114,7 +114,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: { xs: '90%', sm: '92%', md: '70%'},
-  height: { xs: '80%', sm: '60%', md: '70%'},
+  height: { xs: '70%', sm: '50%', md: '70%'},
   bgcolor: 'white',
   border: '2px solid #EEEEEE',
   borderRadius: 2,
@@ -247,7 +247,7 @@ export default function Main() {
         <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={{ xs: 5, sm: 4, md: 3 }} columns={{ xs: 1, sm: 8, md: 12 }}>
           {shipments.map((item, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
-              <Card>
+              <Card elevation={3}>
                 <CardHeader
                   avatar={
                     <Avatar sx={{ bgcolor: colors[Math.floor(Math.random()*colors.length)] }} aria-label='recipe'>
