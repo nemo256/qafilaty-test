@@ -1,10 +1,12 @@
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
+import Box from '@mui/material/Box'
 import Layout from '../components/layouts/Layout'
 import theme from '../theme'
+import '../styles/globals.css'
 
 
-export default function App({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

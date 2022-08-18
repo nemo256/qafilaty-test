@@ -57,25 +57,37 @@ const Search = styled('div')(({ theme }) => ({
 }))
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
+  padding: theme.spacing(0, 4),
   height: '100%',
-  right: 0,
   position: 'absolute',
   pointerEvents: 'none',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  [theme.breakpoints.up('xs')]: {
+    display: 'none',
+    paddingLeft: 0,
+  },
+  [theme.breakpoints.up('sm')]: {
+    display: 'flex',
+    paddingLeft: 12,
+  },
 }))
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 6),
+    padding: theme.spacing(1, 16),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    paddingLeft: `calc(1em + ${theme.spacing(8)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
+    [theme.breakpoints.up('xs')]: {
+      paddingLeft: `calc(1em + ${theme.spacing(0)})`,
+      align: 'center'
+    },
     [theme.breakpoints.up('sm')]: {
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       width: '12ch',
       '&:focus': {
         width: '20ch',
@@ -141,7 +153,9 @@ export default function Bar() {
   return (
     <Box
       sx={{ 
-        display: { xs: "flex", md: "flex", lg: "flex" }
+        display: { xs: "flex", md: "flex", lg: "flex" },
+        mb: 10,
+        mr: 20
       }}
     >
     <AppBar 
@@ -199,8 +213,7 @@ export default function Bar() {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              dir="rtl"
-              placeholder="يبحث"
+              placeholder="Search..."
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
