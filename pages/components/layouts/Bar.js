@@ -280,28 +280,28 @@ export default function Bar() {
               alt="Profile name"
               src="/logo.png" 
               sx={{
-                width: 56,
-                height: 52,
+                width: 62,
+                height: 56,
               }}
             />
           </IconButton>
         </Tooltip>
         <List>
-          <ListItem sx={{ mt: 4, justifyContent: 'center' }}>
-            <Stack direction="column" spacing={2}>
+          <ListItem sx={{ mt: 6, justifyContent: 'center' }}>
+            <Stack direction="column" spacing={3}>
               <ListItemButton>
                 <Link href="/">
-                  <HomeOutlinedIcon />
+                  <HomeOutlinedIcon fontSize='large'/>
                 </Link>
               </ListItemButton>
               <ListItemButton>
                 <Link href="/charts">
-                  <SignalCellularAltOutlinedIcon />
+                  <SignalCellularAltOutlinedIcon fontSize='large'/>
                 </Link>
               </ListItemButton>
               <ListItemButton>
                 <Link href="/profile">
-                  <PersonOutlinedIcon />
+                  <PersonOutlinedIcon fontSize='large'/>
                 </Link>
               </ListItemButton>
             </Stack>
