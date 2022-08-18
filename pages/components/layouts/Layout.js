@@ -32,9 +32,9 @@ export default function Layout({ children }) {
       >
         <Bar />
         <Box sx={{
-            maxWidth: '93%',
+          maxWidth: { xs: '100%', sm: '100%', md: '93%' },
             mt: 0,
-            mr: 12,
+            mr: { xs: 2, sm: 1, md: 12 },
             ml: 2,
             mb: 12,
           }}

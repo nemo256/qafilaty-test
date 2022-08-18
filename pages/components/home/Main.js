@@ -93,10 +93,10 @@ export default function Main() {
   return (
     <>
       <Box sx={{ 
-          mt: 10, 
+          mt: {xs: 4, sm: 8, md: 10},
           mx: 'auto',
           flexGrow: 1, 
-          width: '88%', 
+          width: '97%',
         }}
       >
         <Grid container spacing={{ xs: 4, sm: 4, md: 8 }} columns={{ xs: 1, sm: 4, md: 12 }}>
