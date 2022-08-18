@@ -203,9 +203,9 @@ export default function Main() {
         }}
       >
         <Grid container spacing={{ xs: 4, sm: 4, md: 8 }} columns={{ xs: 1, sm: 4, md: 12 }}>
-          {shipments.map((_, index) => (
+          {shipments.map((item, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
-              <Item>SX</Item>
+              <Item>{item.id}</Item>
             </Grid>
           ))}
         </Grid>
