@@ -196,7 +196,7 @@ export default function Main() {
         </Box>
       </Modal>
       <Box sx={{ 
-          mt: {xs: 4, sm: 8, md: 10},
+          mt: {xs: 6, sm: 8, md: 10},
           mx: 'auto',
           flexGrow: 1, 
           width: '97%',
