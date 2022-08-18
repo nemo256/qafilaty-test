@@ -114,7 +114,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: { xs: '90%', sm: '92%', md: '70%'},
-  height: { xs: '70%', sm: '50%', md: '70%'},
+  height: 'auto',
   bgcolor: 'white',
   border: '2px solid #EEEEEE',
   borderRadius: 2,
