@@ -172,7 +172,16 @@ export default function Main() {
             </Stack>
             <Stack direction='column' spacing={2}>
               <Divider />
-              <Stack direction='row' spacing={2} height={36}>
+              <Stack 
+                direction='row'
+                spacing={2}
+                height={36}
+                sx={{
+                  align: 'center',
+                  alignItems: 'center',
+                  justifyContent: { xs: 'center', sm: 'center', md: 'flex-start' }
+                }}
+              >
                 <Button 
                   size='small'
                   sx={{
