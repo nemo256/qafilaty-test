@@ -17,6 +17,7 @@ import {
   Grid,
   Paper,
   Stack,
+  TextField,
   Typography,
 } from '@mui/material'
 import { red } from '@mui/material/colors';
@@ -164,12 +165,27 @@ export default function Main() {
               </Stack>
               <Divider />
             </Stack>
-            <Stack direction='column' spacing={2} height='100%' justifyContent='space-between'>
+            <Stack direction='column' spacing={2} height='100%' justifyContent='flex-start'>
               <Alert severity='warning'>
                 <Typography fontSize={10}>
                   Note: You must have an email address
                 </Typography>
               </Alert>
+              <Stack direction='column' spacing={1}>
+                <Stack direction='row' spacing={1} justifyContent='space-evenly'>
+                  <TextField fullWidth id="outlined-basic" label="First Name" variant="outlined" />
+                  <TextField fullWidth id="outlined-basic" label="Last Name" variant="outlined" />
+                </Stack>
+                <TextField fullWidth id="outlined-basic" label="Email" variant="outlined" />
+                <Stack direction='row' spacing={1} justifyContent='space-evenly'>
+                  <TextField fullWidth id="outlined-basic" label="Phone Number" variant="outlined" />
+                  <TextField fullWidth id="outlined-basic" label="Phone Number (optional)" variant="outlined" />
+                </Stack>
+                <Stack direction='row' spacing={1} justifyContent='space-evenly'>
+                  <TextField fullWidth id="outlined-basic" label="Address" variant="outlined" />
+                  <TextField fullWidth id="outlined-basic" label="City" variant="outlined" />
+                </Stack>
+              </Stack>
             </Stack>
             <Stack direction='column' spacing={2}>
               <Divider />
@@ -228,7 +244,7 @@ export default function Main() {
           width: '97%',
         }}
       >
-        <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={{ xs: 6, sm: 4, md: 2 }} columns={{ xs: 1, sm: 8, md: 12 }}>
+        <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={{ xs: 5, sm: 4, md: 3 }} columns={{ xs: 1, sm: 8, md: 12 }}>
           {shipments.map((item, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
               <Card>
