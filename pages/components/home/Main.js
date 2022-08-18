@@ -150,7 +150,7 @@ export default function Main() {
               <Divider />
             </Stack>
             <Alert severity="warning">
-              <Typography fontSize={9}>
+              <Typography fontSize={10}>
                 Note: You must have an email address
               </Typography>
             </Alert>
