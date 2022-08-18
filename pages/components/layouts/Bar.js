@@ -164,7 +164,7 @@ export default function Bar() {
       sx={{
         backgroundColor: '#FFFFFF',
         color: '#000000',
-        maxWidth: { xs: '100%', md: '93%' },
+        maxWidth: { xs: '100%', sm: '100%', md: '93%' },
         left: 0,
       }}
     >
@@ -199,14 +199,14 @@ export default function Bar() {
               ))}
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'none', md: 'flex' } }}>
             <StyledBadge badgeContent={5}>
               <IconButton sx={{ ml: 2, backgroundColor: '#EEEEEE' }} >
                 <NotificationsOutlinedIcon />
               </IconButton>
             </StyledBadge>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex', md: 'flex' } }}>
           </Box>
           <Search>
             <SearchIconWrapper>
@@ -217,7 +217,9 @@ export default function Bar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: { xs: 0, sm: 1, md: 0 }, display: { xs: 'none', sm: 'flex', md: 'flex' } }}>
+          </Box>
+          <Box sx={{ flexGrow: 0, display: { xs: 'flex', sm: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
