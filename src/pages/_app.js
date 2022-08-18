@@ -3,7 +3,6 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
 import Layout from '../components/layouts/Layout'
 import theme from '../theme'
-import '../styles/globals.css'
 
 
 export default function MyApp({ Component, pageProps }) {
