@@ -156,8 +156,9 @@ export default function Main() {
             </Alert>
             <Stack direction='column' spacing={2}>
               <Divider />
-              <Stack direction='row' spacing={2} height={40}>
+              <Stack direction='row' spacing={2} height={36}>
                 <Button 
+                  size='small'
                   sx={{
                     backgroundColor: '#7D749E',
                     '&:hover': {
@@ -170,13 +171,16 @@ export default function Main() {
                   Confirm
                 </Button>
                 <Button 
+                  size='small'
                   sx={{
+                    border: '4px solid',
                     color: '#7D749E',
                     borderColor: '#7D749E',
                     backgroundColor: '#FFFFFF',
                     '&:hover': {
+                      border: '4px solid',
                       color: '#7D749E',
-                      borderColor: '#FFFFFF',
+                      borderColor: '#7D749E',
                       backgroundColor: '#DDDDDD',
                     }
                   }}
