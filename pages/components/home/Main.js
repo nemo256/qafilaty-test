@@ -1,18 +1,29 @@
 import * as React from 'react'
 import {
-  Box,
   Alert,
-  IconButton,
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  CardMedia,
   Collapse,
   Divider,
-  Button,
-  Paper,
-  Grid,
-  Stack,
   Modal,
+  IconButton,
+  Grid,
+  Paper,
+  Stack,
   Typography,
 } from '@mui/material'
+import { red } from '@mui/material/colors';
 import { experimentalStyled as styled } from '@mui/material/styles'
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CloseIcon from '@mui/icons-material/Close'
 import AddIcon from '@mui/icons-material/Add'
 import CheckIcon from '@mui/icons-material/Check'
@@ -149,11 +160,13 @@ export default function Main() {
               </Stack>
               <Divider />
             </Stack>
-            <Alert severity="warning">
-              <Typography fontSize={10}>
-                Note: You must have an email address
-              </Typography>
-            </Alert>
+            <Stack direction='column' spacing={2} height='100%' justifyContent='space-between'>
+              <Alert severity="warning">
+                <Typography fontSize={10}>
+                  Note: You must have an email address
+                </Typography>
+              </Alert>
+            </Stack>
             <Stack direction='column' spacing={2}>
               <Divider />
               <Stack direction='row' spacing={2} height={36}>
@@ -173,12 +186,12 @@ export default function Main() {
                 <Button 
                   size='small'
                   sx={{
-                    border: '4px solid',
+                    border: '2px solid',
                     color: '#7D749E',
                     borderColor: '#7D749E',
                     backgroundColor: '#FFFFFF',
                     '&:hover': {
-                      border: '4px solid',
+                      border: '2px solid',
                       color: '#7D749E',
                       borderColor: '#7D749E',
                       backgroundColor: '#DDDDDD',
@@ -196,16 +209,46 @@ export default function Main() {
         </Box>
       </Modal>
       <Box sx={{ 
-          mt: {xs: 6, sm: 8, md: 10},
+          mt: 6,
           mx: 'auto',
           flexGrow: 1, 
           width: '97%',
         }}
       >
-        <Grid container spacing={{ xs: 4, sm: 4, md: 8 }} columns={{ xs: 1, sm: 4, md: 12 }}>
+        <Grid container spacing={{ xs: 6, sm: 6, md: 8 }} columns={{ xs: 1, sm: 4, md: 12 }}>
           {shipments.map((item, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
-              <Item>{item.id}</Item>
+              <Card>
+                <CardHeader
+                  avatar={
+                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                      R
+                    </Avatar>
+                  }
+                  action={
+                    <IconButton aria-label="settings">
+                      <MoreVertIcon />
+                    </IconButton>
+                  }
+                  title="Shrimp and Chorizo Paella"
+                  subheader="September 14, 2016"
+                />
+                <CardContent>
+                  <Typography variant="body2" color="text.secondary">
+                    This impressive paella is a perfect party dish and a fun meal to cook
+                    together with your guests. Add 1 cup of frozen peas along with the mussels,
+                    if you like.
+                  </Typography>
+                </CardContent>
+                <CardActions disableSpacing>
+                  <IconButton aria-label="add to favorites">
+                    <FavoriteIcon />
+                  </IconButton>
+                  <IconButton aria-label="share">
+                    <ShareIcon />
+                  </IconButton>
+                </CardActions>
+              </Card>
             </Grid>
           ))}
         </Grid>
