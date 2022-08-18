@@ -29,6 +29,9 @@ import AddIcon from '@mui/icons-material/Add'
 import CheckIcon from '@mui/icons-material/Check'
 
 
+// picking a random color
+const colors = ['red','blue','green','yellow', 'magenta', 'indigo', 'lime', 'gold']
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -215,13 +218,13 @@ export default function Main() {
           width: '97%',
         }}
       >
-        <Grid container spacing={{ xs: 6, sm: 6, md: 8 }} columns={{ xs: 1, sm: 4, md: 12 }}>
+        <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={{ xs: 6, sm: 4, md: 2 }} columns={{ xs: 1, sm: 8, md: 16 }}>
           {shipments.map((item, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
               <Card>
                 <CardHeader
                   avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                    <Avatar sx={{ bgcolor: colors[Math.floor(Math.random()*colors.length)] }} aria-label="recipe">
                       R
                     </Avatar>
                   }
@@ -235,9 +238,7 @@ export default function Main() {
                 />
                 <CardContent>
                   <Typography variant="body2" color="text.secondary">
-                    This impressive paella is a perfect party dish and a fun meal to cook
-                    together with your guests. Add 1 cup of frozen peas along with the mussels,
-                    if you like.
+                    This impressive paella is a perfect party dish.
                   </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
