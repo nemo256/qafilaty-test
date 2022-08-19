@@ -22,13 +22,16 @@ import {
 } from '@mui/material'
 import { red } from '@mui/material/colors';
 import { experimentalStyled as styled } from '@mui/material/styles'
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import ShareIcon from '@mui/icons-material/Share'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
 import CloseIcon from '@mui/icons-material/Close'
 import AddIcon from '@mui/icons-material/Add'
 import CheckIcon from '@mui/icons-material/Check'
+
+// custom imports
+import ContainedButton from '../ContainedButton'
 
 
 // picking a random color
@@ -141,22 +144,16 @@ export default function Main() {
 
   return (
     <>
-      <Button 
-        sx={{
-          width: { xs: '90%', sm: '95%', md: 'auto' },
-          ml: 2,
-          mt: { xs: 2, sm: 3, md: 4 },
-          backgroundColor: '#7D749E',
-          '&:hover': {
-            backgroundColor: '#884FAA'
-          }
-        }}
-        variant='contained'
+      <ContainedButton 
+        size='medium'
+        width="{ xs: '90%', sm: '95%', md: 'auto' }"
+        ml={2}
+        mt='{ xs: 2, sm: 3, md: 4 }'
         startIcon={<AddIcon />}
         onClick={handleOpen}
       >
         Add shipment
-      </Button>
+      </ContainedButton>
       <Modal
         keepMounted
         open={open}
@@ -209,19 +206,13 @@ export default function Main() {
                   justifyContent: { xs: 'center', sm: 'center', md: 'flex-start' }
                 }}
               >
-                <Button 
+                <ContainedButton 
                   size='small'
-                  sx={{
-                    backgroundColor: '#7D749E',
-                    '&:hover': {
-                      backgroundColor: '#884FAA'
-                    }
-                  }}
                   variant='contained'
                   startIcon={<CheckIcon />}
                 >
                   Confirm
-                </Button>
+                </ContainedButton>
                 <Button 
                   size='small'
                   sx={{

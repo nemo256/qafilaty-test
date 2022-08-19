@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {
   Avatar,
-  Button,
   TextField,
   FormControlLabel ,
   Checkbox,
@@ -15,6 +14,10 @@ import {
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import LoginIcon from '@mui/icons-material/Login'
 import Head from 'next/head'
+
+// custom imports
+import ContainedButton from './components/ContainedButton'
+
 
 function Copyright(props) {
   return (
@@ -88,24 +91,17 @@ export default function Login() {
               id='password'
               autoComplete='current-password'
             />
-            <Button 
-              sx={{
-                py: 1.3,
-                mt: 3,
-                mb: 2,
-                backgroundColor: '#7D749E',
-                '&:hover': {
-                  backgroundColor: '#884FAA'
-                }
-              }}
-              fullWidth
+            <ContainedButton 
+              py={1.3}
+              mt={3}
+              mb={2}
+              width='100%'
               type='submit'
               size='large'
-              variant='contained'
               startIcon={<LoginIcon />}
             >
               Log In
-            </Button>
+            </ContainedButton>
           </Box>
           <Copyright sx={{
               align: 'center',
