@@ -52,14 +52,14 @@ export default function Login() {
       <Container component='main' maxWidth='xs'>
         <Box
           sx={{
-            mt: 3,
-            mb: 6,
+            my: 'auto',
             mx: 'auto',
             display: 'flex',
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "90vh",
             flexDirection: 'column',
-            alignItems: 'center',
-            justify: 'center',
-            width: '80%'
+            width: '80%',
           }}
         >
           <Box my={4}>
