@@ -39,9 +39,9 @@ const settings = ['Profile', 'Settings', 'Logout']
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: '#EEEEEE',
+  backgroundColor: '#F3F3F3',
   '&:hover': {
-    backgroundColor: '#EEEEEE',
+    backgroundColor: '#F3F3F3',
   },
   marginLeft: 0,
   marginRight: 20,
