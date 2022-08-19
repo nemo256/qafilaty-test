@@ -297,6 +297,8 @@ export default function Bar() {
                 px: 'auto',
                 align: 'center',
                 justifyContent: 'center',
+                backgroundColor: '#E1E1E1',
+                borderRadius: 2,
               }}
             >
               <ListItemIcon
