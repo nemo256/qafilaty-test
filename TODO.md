@@ -7,6 +7,6 @@
 - [x] Add new home layout
 - [x] Add a login page
 - [ ] Add a signup page (may not need to)
-- [ ] Set up small components for reusabilty
+- [ ] Set up small components for reusability
 - [ ] Add routes (already done by nextjs - usually)
 - [ ] Update everything for mobile (responsive approach)
