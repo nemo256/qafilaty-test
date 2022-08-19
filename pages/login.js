@@ -75,7 +75,7 @@ export default function Login() {
             />
             <Button 
               sx={{
-                mt: { xs: 2, sm: 3, md: 4 },
+                mt: { xs: 4, sm: 3, md: 2 },
                 mb: 2,
                 backgroundColor: '#7D749E',
                 '&:hover': {
@@ -92,7 +92,7 @@ export default function Login() {
             </Button>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 4, mb: 4 }} />
+        <Copyright sx={{ position: 'fixed', bottom: 2, mt: 4, mb: 4 }} />
       </Container>
   )
 }
