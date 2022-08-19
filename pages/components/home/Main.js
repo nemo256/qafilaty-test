@@ -254,7 +254,7 @@ export default function Main() {
           width: '97%',
         }}
       >
-        <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={{ xs: 2, sm: 2, md: 2 }} columns={{ xs: 1, sm: 8, md: 12 }}>
+        <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={2} columns={{ xs: 1, sm: 8, md: 12 }}>
           {shipments.map((item, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
               <Card elevation={0}>
