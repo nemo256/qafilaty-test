@@ -53,9 +53,12 @@ export default function Login() {
         <Box
           sx={{
             my: 12,
+            mx: 'auto',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            justify: 'center',
+            width: '80%'
           }}
         >
           <Box my={4}>
@@ -66,6 +69,7 @@ export default function Login() {
               margin='normal'
               required
               fullWidth
+              size='small'
               id='email'
               label='Email Address'
               name='email'
@@ -76,6 +80,7 @@ export default function Login() {
               margin='normal'
               required
               fullWidth
+              size='small'
               name='password'
               label='Password'
               type='password'
@@ -85,7 +90,7 @@ export default function Login() {
             <Button 
               sx={{
                 py: 1.3,
-                mt: 2,
+                mt: 3,
                 mb: 2,
                 backgroundColor: '#7D749E',
                 '&:hover': {
@@ -102,8 +107,14 @@ export default function Login() {
             </Button>
           </Box>
         </Box>
-        <Copyright sx={{ position: 'fixed', bottom: 2, mt: 4, mb: 4 }} />
       </Container>
+      <Copyright sx={{
+        position: 'relative', 
+        bottom: 0,
+        mt: 4, 
+        mb: 4 
+      }}
+      />
     </>
   )
 }

@@ -173,17 +173,17 @@ export default function Main() {
               </Alert>
               <Stack direction='column' spacing={1}>
                 <Stack direction='row' spacing={1} justifyContent='space-evenly'>
-                  <TextField fullWidth id="outlined-basic" label="First Name" variant="outlined" />
-                  <TextField fullWidth id="outlined-basic" label="Last Name" variant="outlined" />
+                  <TextField fullWidth size='small' id="outlined-basic" label="First Name" variant="outlined" />
+                  <TextField fullWidth size='small' id="outlined-basic" label="Last Name" variant="outlined" />
                 </Stack>
-                <TextField fullWidth id="outlined-basic" label="Email" variant="outlined" />
+                <TextField fullWidth size='small' id="outlined-basic" label="Email" variant="outlined" />
                 <Stack direction='row' spacing={1} justifyContent='space-evenly'>
-                  <TextField fullWidth id="outlined-basic" label="Phone Number" variant="outlined" />
-                  <TextField fullWidth id="outlined-basic" label="Phone Number (optional)" variant="outlined" />
+                  <TextField fullWidth size='small' id="outlined-basic" label="Phone Number" variant="outlined" />
+                  <TextField fullWidth size='small' id="outlined-basic" label="Phone Number (optional)" variant="outlined" />
                 </Stack>
                 <Stack direction='row' spacing={1} justifyContent='space-evenly'>
-                  <TextField fullWidth id="outlined-basic" label="Address" variant="outlined" />
-                  <TextField fullWidth id="outlined-basic" label="City" variant="outlined" />
+                  <TextField fullWidth size='small' id="outlined-basic" label="Address" variant="outlined" />
+                  <TextField fullWidth size='small' id="outlined-basic" label="City" variant="outlined" />
                 </Stack>
               </Stack>
             </Stack>
