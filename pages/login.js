@@ -75,7 +75,8 @@ export default function Login() {
             />
             <Button 
               sx={{
-                mt: { xs: 4, sm: 3, md: 2 },
+                py: 1.3,
+                mt: 2,
                 mb: 2,
                 backgroundColor: '#7D749E',
                 '&:hover': {
