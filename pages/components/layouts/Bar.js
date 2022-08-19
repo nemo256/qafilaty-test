@@ -173,7 +173,7 @@ export default function Bar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar sx={{ bgcolor: 'gold' }} alt="Amine" src="">A</Avatar>
+                <Avatar sx={{ bgcolor: '#B2C8DF' }} alt="Amine" src="">A</Avatar>
               </IconButton>
             </Tooltip>
             <Menu

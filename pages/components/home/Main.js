@@ -32,7 +32,18 @@ import CheckIcon from '@mui/icons-material/Check'
 
 
 // picking a random color
-const colors = ['red','blue','green','yellow', 'magenta', 'indigo', 'lime', 'gold']
+const colors = [
+  '#FFF38C',
+  '#E9DAC1',
+  '#FFB4B4',
+  '#CEE5D0',
+  '#DAE2B6',
+  '#B2C8DF',
+  '#FFDCAE',
+  '#F6C6EA',
+  '#FF8C8C',
+  '#B8F1B0',
+]
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
