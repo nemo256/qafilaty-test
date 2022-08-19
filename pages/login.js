@@ -45,9 +45,9 @@ export default function Login() {
     <>
       <Head>
         <title>Qafilaty - Login</title>
-        <link rel="icon" href="/logo.png" />
-        <meta name="description" content="Qafilaty crud app clone" />
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link rel='icon' href='/logo.png' />
+        <meta name='description' content='Qafilaty crud app clone' />
+        <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
       <Container component='main' maxWidth='xs'>
         <Box
@@ -55,9 +55,9 @@ export default function Login() {
             my: 'auto',
             mx: 'auto',
             display: 'flex',
-            justifyContent: "center",
-            alignItems: "center",
-            minHeight: "90vh",
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '90vh',
             flexDirection: 'column',
             width: '80%',
           }}

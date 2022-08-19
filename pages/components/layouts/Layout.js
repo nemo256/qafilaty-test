@@ -12,9 +12,9 @@ export default function Layout({ children }) {
     <>
       <Head>
         <title>Qafilaty Clone</title>
-        <link rel="icon" href="/logo.png" />
-        <meta name="description" content="Qafilaty crud app clone" />
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link rel='icon' href='/logo.png' />
+        <meta name='description' content='Qafilaty crud app clone' />
+        <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
       <Stack 
         sx={{

@@ -1,4 +1,4 @@
-import { styled, alpha } from "@mui/material/styles"
+import { styled, alpha } from '@mui/material/styles'
 import * as React from 'react'
 import {
   AppBar,
@@ -26,10 +26,10 @@ import BadgeUnstyled, { badgeUnstyledClasses } from '@mui/base/BadgeUnstyled'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined'
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined"
-import SignalCellularAltOutlinedIcon from "@mui/icons-material/SignalCellularAltOutlined"
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined"
-import Link from "next/link"
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
+import SignalCellularAltOutlinedIcon from '@mui/icons-material/SignalCellularAltOutlined'
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined'
+import Link from 'next/link'
 
 
 const drawerWidth = '7%'
@@ -43,8 +43,6 @@ const Search = styled('div')(({ theme }) => ({
   '&:hover': {
     backgroundColor: '#F3F3F3',
   },
-  marginLeft: 0,
-  marginRight: 20,
   width: '100%',
   [theme.breakpoints.up('xs')]: {
     marginLeft: 12,
@@ -55,7 +53,7 @@ const Search = styled('div')(({ theme }) => ({
     marginLeft: theme.spacing(1),
     width: '100%',
   },
-  [theme.breakpoints.up('sm')]: {
+  [theme.breakpoints.up('md')]: {
     marginLeft: theme.spacing(1),
     width: 'auto',
   },
@@ -158,14 +156,14 @@ export default function Bar() {
   return (
     <Box
       sx={{ 
-        display: { xs: "flex", md: "flex", lg: "flex" },
+        display: { xs: 'flex', md: 'flex', lg: 'flex' },
         mb: 10,
         mr: 20
       }}
     >
       <AppBar 
         elevation={0}
-        position="fixed"
+        position='fixed'
         sx={{
           backgroundColor: '#FFFFFF',
           color: '#000000',
@@ -173,21 +171,21 @@ export default function Bar() {
           right: 0,
         }}
       >
-        <Container width="100%">
+        <Container width='100%'>
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 0, display: { xs: 'flex', sm: 'flex', md: 'none' } }}>
               <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
+                size='large'
+                aria-label='account of current user'
+                aria-controls='menu-appbar'
+                aria-haspopup='true'
                 onClick={handleOpenNavMenu}
-                color="inherit"
+                color='inherit'
               >
                 <MenuIcon />
               </IconButton>
               <Menu
-                id="menu-appbar"
+                id='menu-appbar'
                 anchorEl={anchorElNav}
                 anchorOrigin={{
                   vertical: 'bottom',
@@ -206,7 +204,7 @@ export default function Bar() {
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                    <Typography textAlign='center'>{page}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -216,7 +214,7 @@ export default function Bar() {
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
-                placeholder="Search..."
+                placeholder='Search...'
                 inputProps={{ 'aria-label': 'search' }}
               />
             </Search>
@@ -232,14 +230,14 @@ export default function Bar() {
               </StyledBadge>
             </Box>
             <Box sx={{ flexGrow: 0, ml: { xs: 1, sm: 2, md: 2 } }}>
-              <Tooltip title="Open settings">
+              <Tooltip title='Open settings'>
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar sx={{ bgcolor: '#B2C8DF' }} alt="Amine" src="">A</Avatar>
+                  <Avatar sx={{ bgcolor: '#B2C8DF' }} alt='Amine' src=''>A</Avatar>
                 </IconButton>
               </Tooltip>
               <Menu
                 sx={{ mt: '45px' }}
-                id="menu-appbar"
+                id='menu-appbar'
                 anchorEl={anchorElUser}
                 anchorOrigin={{
                   vertical: 'top',
@@ -255,7 +253,7 @@ export default function Bar() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography textAlign='center'>{setting}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -267,23 +265,23 @@ export default function Bar() {
         sx={{
           width: drawerWidth,
           flexShrink: 0,
-          "& .MuiDrawer-paper": {
+          '& .MuiDrawer-paper': {
             width: drawerWidth,
-            boxSizing: "border-box",
+            boxSizing: 'border-box',
             borderWidth: 0,
           },
           border: 'none',
           borderWidth: 0,
           display: { xs: 'none', md: 'flex' }
         }}
-        variant="permanent"
-        anchor="left"
+        variant='permanent'
+        anchor='left'
       >
-        <Tooltip title="Qafilaty">
+        <Tooltip title='Qafilaty'>
           <IconButton sx={{ p: 0, mt: 1 }}>
             <Avatar 
-              alt="Profile name"
-              src="/logo.png" 
+              alt='Profile name'
+              src='/logo.png' 
               sx={{
                 width: 62,
                 height: 56,
@@ -293,19 +291,19 @@ export default function Bar() {
         </Tooltip>
         <List>
           <ListItem sx={{ mt: 6, justifyContent: 'center' }}>
-            <Stack direction="column" spacing={2}>
+            <Stack direction='column' spacing={2}>
               <ListItemButton sx={{ backgroundColor: '#DDDDDD', borderRadius: 2 }}>
-                <Link href="/">
+                <Link href='/'>
                   <HomeOutlinedIcon opacity={.8}/>
                 </Link>
               </ListItemButton>
               <ListItemButton sx={{ borderRadius: 2 }}>
-                <Link href="/charts">
+                <Link href='/charts'>
                   <SignalCellularAltOutlinedIcon opacity={.8} />
                 </Link>
               </ListItemButton>
               <ListItemButton sx={{ borderRadius: 2 }}>
-                <Link href="/profile">
+                <Link href='/profile'>
                   <PersonOutlinedIcon opacity={.8} />
                 </Link>
               </ListItemButton>
