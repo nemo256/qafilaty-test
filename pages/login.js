@@ -52,7 +52,8 @@ export default function Login() {
       <Container component='main' maxWidth='xs'>
         <Box
           sx={{
-            my: 12,
+            mt: 3,
+            mb: 6,
             mx: 'auto',
             display: 'flex',
             flexDirection: 'column',
@@ -106,15 +107,18 @@ export default function Login() {
               Log In
             </Button>
           </Box>
+          <Copyright sx={{
+              align: 'center',
+              justifyContent: 'center',
+              marginTop: 'calc(10% + 60px)',
+              mx: 'auto',
+              width: '100%',
+              position: 'fixed',
+              bottom: 20,
+            }}
+          />
         </Box>
       </Container>
-      <Copyright sx={{
-        position: 'relative', 
-        bottom: 0,
-        mt: 4, 
-        mb: 4 
-      }}
-      />
     </>
   )
 }
