@@ -289,7 +289,7 @@ export default function Bar() {
         </Tooltip>
         <List>
           <ListItem sx={{ mt: 6, justifyContent: 'center' }}>
-            <Stack direction="column" spacing={3}>
+            <Stack direction="column" spacing={2}>
               <ListItemButton>
                 <Link href="/">
                   <HomeOutlinedIcon opacity={.8} />
