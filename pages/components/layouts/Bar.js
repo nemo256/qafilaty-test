@@ -294,7 +294,6 @@ export default function Bar() {
             <ListItemButton
               sx={{
                 mx: 'auto',
-                px: 'auto',
                 align: 'center',
                 justifyContent: 'center',
                 backgroundColor: '#E1E1E1',
@@ -316,9 +315,9 @@ export default function Bar() {
             <ListItemButton
               sx={{
                 mx: 'auto',
-                px: 'auto',
                 align: 'center',
                 justifyContent: 'center',
+                borderRadius: 2,
               }}
             >
               <ListItemIcon
@@ -336,9 +335,9 @@ export default function Bar() {
             <ListItemButton
               sx={{
                 mx: 'auto',
-                px: 'auto',
                 align: 'center',
                 justifyContent: 'center',
+                borderRadius: 2,
               }}
             >
               <ListItemIcon
