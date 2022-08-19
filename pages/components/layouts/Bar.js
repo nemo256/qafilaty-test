@@ -32,8 +32,8 @@ import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined'
 import Link from 'next/link'
 
 
-const drawerWidth = '7%'
-const pages = ['Home', 'Charts', 'Profile']
+const drawerWidth = '5%'
+const pages = [ 'Home', 'Charts', 'Profile' ]
 const settings = ['Profile', 'Settings', 'Logout']
 
 const Search = styled('div')(({ theme }) => ({
@@ -167,7 +167,7 @@ export default function Bar() {
         sx={{
           backgroundColor: '#FFFFFF',
           color: '#000000',
-          maxWidth: { xs: '100%', sm: '100%', md: '93%' },
+          maxWidth: { xs: '100%', sm: '100%', md: '95%' },
           right: 0,
         }}
       >
@@ -283,31 +283,72 @@ export default function Bar() {
               alt='Profile name'
               src='/logo.png' 
               sx={{
-                width: 62,
-                height: 56,
+                width: 48,
+                height: 48,
               }}
             />
           </IconButton>
         </Tooltip>
-        <List>
-          <ListItem sx={{ mt: 6, justifyContent: 'center' }}>
-            <Stack direction='column' spacing={2}>
-              <ListItemButton sx={{ backgroundColor: '#DDDDDD', borderRadius: 2 }}>
-                <Link href='/'>
-                  <HomeOutlinedIcon opacity={.8}/>
-                </Link>
-              </ListItemButton>
-              <ListItemButton sx={{ borderRadius: 2 }}>
-                <Link href='/charts'>
-                  <SignalCellularAltOutlinedIcon opacity={.8} />
-                </Link>
-              </ListItemButton>
-              <ListItemButton sx={{ borderRadius: 2 }}>
-                <Link href='/profile'>
-                  <PersonOutlinedIcon opacity={.8} />
-                </Link>
-              </ListItemButton>
-            </Stack>
+        <List sx={{ mt: 6 }}>
+          <ListItem disablePadding sx={{ mt: 1, display: 'block', justifyContent: 'center' }}>
+            <ListItemButton
+              sx={{
+                mx: 'auto',
+                px: 'auto',
+                align: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  mx: 'auto',
+                  align: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <HomeOutlinedIcon />
+              </ListItemIcon>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding sx={{ mt: 1, display: 'block', justifyContent: 'center' }}>
+            <ListItemButton
+              sx={{
+                mx: 'auto',
+                px: 'auto',
+                align: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  mx: 'auto',
+                  align: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <SignalCellularAltOutlinedIcon />
+              </ListItemIcon>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding sx={{ mt: 1, display: 'block', justifyContent: 'center' }}>
+            <ListItemButton
+              sx={{
+                mx: 'auto',
+                px: 'auto',
+                align: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  mx: 'auto',
+                  align: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <PersonOutlinedIcon />
+              </ListItemIcon>
+            </ListItemButton>
           </ListItem>
         </List>
       </Drawer>

@@ -33,7 +33,7 @@ export default function Layout({ children }) {
         <Box sx={{
           maxWidth: { xs: '100%', sm: '100%', md: '93%' },
             mt: 0,
-            ml: { xs: 2, sm: 1, md: 12 },
+            ml: { xs: 2, sm: 1, md: 9 },
             mr: 2,
             mb: 12,
           }}
