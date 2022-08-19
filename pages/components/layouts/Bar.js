@@ -8,6 +8,7 @@ import {
   Container,
   Drawer,
   InputBase,
+  Icon,
   IconButton,
   List,
   ListItem,
@@ -291,17 +292,17 @@ export default function Bar() {
             <Stack direction="column" spacing={3}>
               <ListItemButton>
                 <Link href="/">
-                  <HomeOutlinedIcon fontSize='large'/>
+                  <HomeOutlinedIcon opacity={.8} />
                 </Link>
               </ListItemButton>
               <ListItemButton>
                 <Link href="/charts">
-                  <SignalCellularAltOutlinedIcon fontSize='large'/>
+                  <SignalCellularAltOutlinedIcon opacity={.8} />
                 </Link>
               </ListItemButton>
               <ListItemButton>
                 <Link href="/profile">
-                  <PersonOutlinedIcon fontSize='large'/>
+                  <PersonOutlinedIcon opacity={.8} />
                 </Link>
               </ListItemButton>
             </Stack>

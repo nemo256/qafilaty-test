@@ -151,7 +151,6 @@ export default function Main() {
             backgroundColor: '#884FAA'
           }
         }}
-        size='large'
         variant='contained'
         startIcon={<AddIcon />}
         onClick={handleOpen}
