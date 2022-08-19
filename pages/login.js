@@ -19,7 +19,7 @@ function Copyright(props) {
     <Typography variant='body2' color='text.secondary' align='center' {...props}>
       {'Copyright © '}
       <Link color='inherit' href='https://qafilaty-test.vercel.app/'>
-        Qafilaty - all rights reserved
+        Qafilaty - All rights reserved
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
