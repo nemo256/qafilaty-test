@@ -131,7 +131,7 @@ const style = {
   borderRadius: 2,
   boxShadow: 24,
   p: 4,
-};
+}
 
 
 export default function Main() {
