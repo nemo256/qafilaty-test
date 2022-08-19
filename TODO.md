@@ -5,7 +5,8 @@
 - [x] Add layout, navbar and footer
 - [x] Fix Navbar and Sidebar
 - [x] Add new home layout
-- [ ] Add a login page
+- [x] Add a login page
 - [ ] Add a signup page (may not need to)
+- [ ] Set up small components for reusabilty
 - [ ] Add routes (already done by nextjs - usually)
 - [ ] Update everything for mobile (responsive approach)
