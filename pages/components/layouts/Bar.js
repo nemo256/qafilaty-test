@@ -290,17 +290,17 @@ export default function Bar() {
         <List>
           <ListItem sx={{ mt: 6, justifyContent: 'center' }}>
             <Stack direction="column" spacing={2}>
-              <ListItemButton>
+              <ListItemButton sx={{ backgroundColor: '#DDDDDD', borderRadius: 2 }}>
                 <Link href="/">
-                  <HomeOutlinedIcon opacity={.8} />
+                  <HomeOutlinedIcon opacity={.8}/>
                 </Link>
               </ListItemButton>
-              <ListItemButton>
+              <ListItemButton sx={{ borderRadius: 2 }}>
                 <Link href="/charts">
                   <SignalCellularAltOutlinedIcon opacity={.8} />
                 </Link>
               </ListItemButton>
-              <ListItemButton>
+              <ListItemButton sx={{ borderRadius: 2 }}>
                 <Link href="/profile">
                   <PersonOutlinedIcon opacity={.8} />
                 </Link>
