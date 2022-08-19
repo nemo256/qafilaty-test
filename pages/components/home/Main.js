@@ -257,7 +257,7 @@ export default function Main() {
         <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={{ xs: 5, sm: 4, md: 3 }} columns={{ xs: 1, sm: 8, md: 12 }}>
           {shipments.map((item, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
-              <Card elevation={3}>
+              <Card elevation={0}>
                 <CardHeader
                   avatar={
                     <Avatar sx={{ bgcolor: colors[Math.floor(Math.random()*colors.length)] }} aria-label='recipe'>
