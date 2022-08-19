@@ -4,6 +4,8 @@
 - [x] Add materialUI support
 - [x] Add layout, navbar and footer
 - [x] Fix Navbar and Sidebar
-- [ ] Add new home layout
-- [ ] Add routes
+- [x] Add new home layout
+- [ ] Add a login page
+- [ ] Add a signup page (may not need to)
+- [ ] Add routes (already done by nextjs - usually)
 - [ ] Update everything for mobile (responsive approach)
