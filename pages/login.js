@@ -1,3 +1,4 @@
+import { gql, useMutation } from '@apollo/client'
 import * as React from 'react'
 import {
   Avatar,
@@ -14,7 +15,6 @@ import {
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import LoginIcon from '@mui/icons-material/Login'
 import Head from 'next/head'
-import { gql, useQuery } from '@apollo/client'
 
 // custom imports
 import ContainedButton from './components/ContainedButton'
@@ -36,12 +36,30 @@ function Copyright(props) {
 const theme = createTheme()
 
 export default function Login() {
+  const AUTH_USER = gql`
+    mutation AuthUser ($credentials: content!) {
+      authenticateUser (credentials: $credentials) {
+        token
+        user {
+          id
+          user_name
+        }
+      }
+    }
+  `
+
+  const [authUser, { data, loading, err }] = useMutation(AUTH_USER)
+
   const handleSubmit = (event) => {
     event.preventDefault()
-    const formData = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+    const formData = new FormData(event.currentTarget)
+    authUser({
+      variables: {
+        credentials: {
+          email: formData.email,
+          pass: formData.pass
+        }
+      }
     })
   }
 
@@ -86,7 +104,7 @@ export default function Login() {
               required
               fullWidth
               size='small'
-              name='password'
+              name='pass'
               label='Password'
               type='password'
               id='password'
