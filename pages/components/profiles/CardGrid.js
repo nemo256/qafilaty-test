@@ -5,7 +5,8 @@ import {
   Avatar,
   IconButton,
   Stack,
-  Chip
+  Chip,
+  Typography
 } from '@mui/material'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 
@@ -27,7 +28,7 @@ const colors = [
 
 const CardGrid = ({ users }) => {
   return (
-    <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={2} columns={{ xs: 1, sm: 8, md: 12 }}>
+    <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={2} columns={{ xs: 1, sm: 8, md: 10, lg: 12 }}>
       {users.allUsers.map((user) => (
         <Grid item xs={2} sm={4} md={4} key={user.id}>
           <Card elevation={0}>
@@ -42,7 +43,7 @@ const CardGrid = ({ users }) => {
                   <MoreVertIcon />
                 </IconButton>
               }
-              title={ user.person.first_name}
+              title={ user.person.first_name + ' ' + user.person.last_name }
               subheader={ user.person.email }
             />
             <Stack

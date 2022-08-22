@@ -117,7 +117,7 @@ export default function Main() {
             </Stack>
             <Stack direction='column' spacing={2} height='100%' justifyContent='flex-start'>
               <Alert severity='warning'>
-                <Typography fontSize={10}>
+                <Typography fontSize={13}>
                   Note: You must have an email address
                 </Typography>
               </Alert>
