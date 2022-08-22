@@ -14,6 +14,7 @@ import {
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import LoginIcon from '@mui/icons-material/Login'
 import Head from 'next/head'
+import { gql, useQuery } from '@apollo/client'
 
 // custom imports
 import ContainedButton from './components/ContainedButton'
@@ -37,7 +38,7 @@ const theme = createTheme()
 export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault()
-    const data = new FormData(event.currentTarget);
+    const formData = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
       password: data.get('password'),

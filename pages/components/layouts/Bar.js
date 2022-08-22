@@ -1,5 +1,6 @@
 import { styled, alpha } from '@mui/material/styles'
 import * as React from 'react'
+import { useRouter } from "next/router"
 import {
   AppBar,
   Avatar,
@@ -137,6 +138,9 @@ const StyledBadge = styled(BadgeUnstyled)`
 export default function Bar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null)
   const [anchorElUser, setAnchorElUser] = React.useState(null)
+
+  const router = useRouter()
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
@@ -291,65 +295,73 @@ export default function Bar() {
         </Tooltip>
         <List sx={{ mt: 6 }}>
           <ListItem disablePadding sx={{ mt: 1, display: 'block', justifyContent: 'center' }}>
-            <ListItemButton
-              sx={{
-                mx: 'auto',
-                align: 'center',
-                justifyContent: 'center',
-                backgroundColor: '#E1E1E1',
-                borderRadius: 2,
-              }}
-            >
-              <ListItemIcon
+            <Link href='/'>
+              <ListItemButton
                 sx={{
                   mx: 'auto',
                   align: 'center',
                   justifyContent: 'center',
+                  backgroundColor: router.pathname == '/' ? '#E1E1E1' : null,
+                  borderRadius: 2,
                 }}
               >
-                <HomeOutlinedIcon />
-              </ListItemIcon>
-            </ListItemButton>
+                <ListItemIcon
+                  sx={{
+                    mx: 'auto',
+                    align: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <HomeOutlinedIcon />
+                </ListItemIcon>
+              </ListItemButton>
+            </Link>
           </ListItem>
           <ListItem disablePadding sx={{ mt: 1, display: 'block', justifyContent: 'center' }}>
-            <ListItemButton
-              sx={{
-                mx: 'auto',
-                align: 'center',
-                justifyContent: 'center',
-                borderRadius: 2,
-              }}
-            >
-              <ListItemIcon
+            <Link href='/'>
+              <ListItemButton
                 sx={{
                   mx: 'auto',
                   align: 'center',
                   justifyContent: 'center',
+                  backgroundColor: router.pathname == '/signals' ? '#E1E1E1' : null,
+                  borderRadius: 2,
                 }}
               >
-                <SignalCellularAltOutlinedIcon />
-              </ListItemIcon>
-            </ListItemButton>
+                <ListItemIcon
+                  sx={{
+                    mx: 'auto',
+                    align: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <SignalCellularAltOutlinedIcon />
+                </ListItemIcon>
+              </ListItemButton>
+            </Link>
           </ListItem>
           <ListItem disablePadding sx={{ mt: 1, display: 'block', justifyContent: 'center' }}>
-            <ListItemButton
-              sx={{
-                mx: 'auto',
-                align: 'center',
-                justifyContent: 'center',
-                borderRadius: 2,
-              }}
-            >
-              <ListItemIcon
+            <Link href='/profiles'>
+              <ListItemButton
                 sx={{
                   mx: 'auto',
                   align: 'center',
                   justifyContent: 'center',
+                  backgroundColor: router.pathname == '/profiles' ? '#E1E1E1' : null,
+                  borderRadius: 2,
                 }}
               >
-                <PersonOutlinedIcon />
-              </ListItemIcon>
-            </ListItemButton>
+                <ListItemIcon
+                  sx={{
+                    mx: 'auto',
+                    align: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <PersonOutlinedIcon />
+                </ListItemIcon>
+              </ListItemButton>
+            </Link>
           </ListItem>
         </List>
       </Drawer>
