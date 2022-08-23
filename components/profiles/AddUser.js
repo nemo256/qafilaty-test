@@ -169,6 +169,7 @@ export default function AddUser() {
                   <TextField fullWidth name='username' size='small' id='outlined-basic' label='Username' variant='outlined' />
                   <TextField fullWidth name='password' type='password' size='small' id='outlined-password-input' label='Password' variant='outlined' />
                 </Stack>
+                <Divider my={4} />
                 <Stack direction='row' spacing={1} justifyContent='space-evenly'>
                   <TextField fullWidth name='first_name' size='small' id='outlined-basic' label='First Name' variant='outlined' />
                   <TextField fullWidth name='last_name' size='small' id='outlined-basic' label='Last Name' variant='outlined' />
