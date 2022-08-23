@@ -16,6 +16,7 @@ export default function ContainedButton({ children, ...props }) {
           backgroundColor: '#884FAA'
         }
       }}
+      fullWidth={ props.fullWidth ? props.fullWidth : null }
       type={ props.type ? props.type : null }
       size={ props.size ? props.size : null }
       startIcon={ props.startIcon ? props.startIcon : null }
