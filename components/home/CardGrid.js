@@ -31,11 +31,10 @@ const colors = [
 
 export default function CardGrid() {
   // fetch all users
-  const GET_USERS = gql`
+  const GET_CLIENTS = gql`
     {
-      allUsers {
+      allClients {
         id
-        user_name
         person {
           id
           first_name
@@ -50,18 +49,18 @@ export default function CardGrid() {
     }
   `
 
-  const { data } = useQuery(GET_USERS)
+  const { data } = useQuery(GET_CLIENTS)
 
   return (
     <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={2} columns={{ xs: 1, sm: 8, md: 10, lg: 12 }}>
 
-      {data && data.allUsers.map((user) => (
-        <Grid item xs={2} sm={4} md={4} key={user.id}>
+      {data && data.allClients.map((client) => (
+        <Grid item xs={2} sm={4} md={4} key={client.id}>
           <Card elevation={0}>
             <CardHeader
               avatar={
                 <Avatar sx={{ bgcolor: colors[Math.floor(Math.random()*colors.length)] }} aria-label='recipe'>
-                  { user.person.last_name.charAt(0).toUpperCase() }
+                  { client.person.last_name.charAt(0).toUpperCase() }
                 </Avatar>
               }
               action={
@@ -69,8 +68,8 @@ export default function CardGrid() {
                   <MoreVertIcon />
                 </IconButton>
               }
-              title={ user.person.first_name + ' ' + user.person.last_name }
-              subheader={ user.person.email }
+              title={ client.person.first_name + ' ' + client.person.last_name }
+              subheader={ client.person.email }
             />
             <Stack
               spacing={2}
@@ -80,8 +79,8 @@ export default function CardGrid() {
                 justifyContent: 'space-between',
               }}
             >
-              <Chip label={ user.person.city } variant='outlined' />
-              <Chip label={ user.person.phone01 } variant='contained' />
+              <Chip label={ client.person.city } variant='outlined' />
+              <Chip label={ client.person.phone01 } variant='contained' />
             </Stack>
           </Card>
         </Grid>
