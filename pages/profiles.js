@@ -7,10 +7,12 @@ export default function Profiles() {
   return (
     <>
       <Box 
-        mx={2}
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
+        sx={{
+          mx: 2,
+          display: { xs: "flex", sm: 'flex', md: 'block' },
+          justifyContent: "center",
+          alignItems: "center"
+        }}
       >
         <AddUser />
       </Box>

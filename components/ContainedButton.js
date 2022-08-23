@@ -11,6 +11,8 @@ export default function ContainedButton({ children, ...props }) {
         mb: props.mb ? props.mb : null,
         ml: props.ml ? props.ml : null,
         width: props.width ? props.width : null,
+        fullWidth: props.fullWidth ? props.fullWidth : null,
+        display: props.display ? props.display : null,
         backgroundColor: '#7D749E',
         '&:hover': {
           backgroundColor: '#884FAA'

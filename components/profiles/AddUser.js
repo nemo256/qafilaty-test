@@ -128,9 +128,11 @@ export default function AddUser() {
   return (
     <>
       <ContainedButton 
-        fullWidth
+        sx={{ 
+          px: { xs: 8, sm: 4, md: 4 },
+          fullWidth: { xs: true, sm: true, md: false }
+        }}
         size='medium'
-        width="{ xs: '90%', sm: '95%', md: 'auto' }"
         ml='{ xs: 0, sm: 0, md: 2 }'
         mt='{ xs: 2, sm: 3, md: 4 }'
         startIcon={<AddIcon />}
