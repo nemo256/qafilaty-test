@@ -66,12 +66,16 @@ export default function Login() {
       setError('Empty password!')
     } else {
       console.log('here')
-      authUser({
-        variables: {
-          email: formData.get('email'),
-          password: formData.get('password')
-        }
-      })
+      try {
+        authUser({
+          variables: {
+            email: formData.get('email'),
+            password: formData.get('password')
+          }
+        })
+      } catch (e) {
+        console.error(e)
+      }
     }
 
     if (data?.authenticateUser?.token) {

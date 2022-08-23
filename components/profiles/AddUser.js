@@ -99,11 +99,7 @@ export default function AddUser() {
     }
   `
 
-  try {
-    const [addUser, { data, loading, err }] = useMutation(ADD_USER)
-  } catch (e) {
-    console.log(e)
-  }
+  const [addUser, { data, loading, err }] = useMutation(ADD_USER)
 
   const handleSubmit = (e) => {
     event.preventDefault()
@@ -112,7 +108,7 @@ export default function AddUser() {
     try {
       addUser({
         variables: {
-          username: formData.get('username'),
+          user_name: formData.get('user_name'),
           password: formData.get('password'),
           first_name: formData.get('first_name'),
           last_name: formData.get('last_name'),
@@ -123,6 +119,7 @@ export default function AddUser() {
           city: formData.get('city'),
         }
       })
+      handleClose()
     } catch (e) {
       console.log(e)
     }
@@ -166,7 +163,7 @@ export default function AddUser() {
               </Alert>
               <Stack direction='column' spacing={1}>
                 <Stack direction='row' spacing={1} justifyContent='space-evenly'>
-                  <TextField fullWidth name='username' size='small' id='outlined-basic' label='Username' variant='outlined' />
+                  <TextField fullWidth name='user_name' size='small' id='outlined-basic' label='Username' variant='outlined' />
                   <TextField fullWidth name='password' type='password' size='small' id='outlined-password-input' label='Password' variant='outlined' />
                 </Stack>
                 <Divider my={4} />
