@@ -17,7 +17,7 @@ import LoginIcon from '@mui/icons-material/Login'
 import Head from 'next/head'
 
 // custom imports
-import ContainedButton from './components/ContainedButton'
+import ContainedButton from '../components/ContainedButton'
 
 
 function Copyright(props) {

@@ -1,4 +1,4 @@
-import Main from './components/profiles/Main'
+import Main from '../components/profiles/Main'
 
 
 export default function Profiles() {

@@ -26,7 +26,7 @@ const colors = [
 ]
 
 
-const CardGrid = ({ users }) => {
+export default function CardGrid({ users }) {
   return (
     <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={2} columns={{ xs: 1, sm: 8, md: 10, lg: 12 }}>
       {users.allUsers.map((user) => (
@@ -63,5 +63,3 @@ const CardGrid = ({ users }) => {
     </Grid>
   )
 }
-
-export default CardGrid

@@ -1,5 +1,5 @@
 import CssBaseline from '@mui/material/CssBaseline'
-import Layout from './components/layouts/Layout'
+import Layout from '../components/layouts/Layout'
 import darkScrollbar from '@mui/material/darkScrollbar';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useRouter } from 'next/router'

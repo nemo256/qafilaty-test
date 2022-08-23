@@ -22,7 +22,7 @@ export default function ContainedButton({ children, ...props }) {
       onClick={ props.onClick ? props.onClick : null }
       variant='contained'
     >
-      {children}
+      { children }
     </Button>
   )
 }
