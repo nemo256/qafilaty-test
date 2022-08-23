@@ -1,6 +1,7 @@
 import { gql, useMutation } from '@apollo/client'
 import * as React from 'react'
 import {
+  Alert,
   Avatar,
   TextField,
   FormControlLabel ,
@@ -15,6 +16,7 @@ import {
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import LoginIcon from '@mui/icons-material/Login'
 import Head from 'next/head'
+import Router from 'next/router'
 
 // custom imports
 import ContainedButton from '../components/ContainedButton'
@@ -36,9 +38,11 @@ function Copyright(props) {
 const theme = createTheme()
 
 export default function Login() {
+  const [error, setError] = React.useState('')
+
   const AUTH_USER = gql`
-    mutation AuthUser ($credentials: content!) {
-      authenticateUser (credentials: $credentials) {
+    mutation AuthUser ($email: String!, $password: String!) {
+      authenticateUser (content : { email: $email, password: $password }) {
         token
         user {
           id
@@ -53,14 +57,28 @@ export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
-    authUser({
-      variables: {
-        credentials: {
-          email: formData.email,
-          pass: formData.pass
+
+    if (formData.get('email') == '' && formData.get('password') == '') {
+      setError('Empty fields!')
+    } else if (formData.get('email') == '') {
+      setError('Empty email!')
+    } else if (formData.get('password') == '') {
+      setError('Empty password!')
+    } else {
+      console.log('here')
+      authUser({
+        variables: {
+          email: formData.get('email'),
+          password: formData.get('password')
         }
-      }
-    })
+      })
+    }
+
+    if (data?.authenticateUser?.token) {
+      Router.push('/')
+    } else {
+      let error = 'Something went wrong'
+    }
   }
 
   return (
@@ -84,6 +102,7 @@ export default function Login() {
             width: '80%',
           }}
         >
+          { error && <Alert severity="error">{ error }</Alert> }
           <Box my={4}>
             <img src='qafilaty.svg' />
           </Box>
@@ -104,7 +123,7 @@ export default function Login() {
               required
               fullWidth
               size='small'
-              name='pass'
+              name='password'
               label='Password'
               type='password'
               id='password'
