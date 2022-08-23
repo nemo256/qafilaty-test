@@ -34,7 +34,20 @@ import Link from 'next/link'
 
 
 const drawerWidth = '5%'
-const pages = [ 'Home', 'Charts', 'Profile' ]
+const pages = [
+  {
+    'path': '/',
+    'name': 'Home'
+  },
+  {
+    'path': '/',
+    'name': 'Charts'
+  },
+  {
+    'path': '/profiles',
+    'name': 'Profiles'
+  },
+]
 const settings = ['Profile', 'Settings', 'Logout']
 
 const Search = styled('div')(({ theme }) => ({
@@ -207,9 +220,11 @@ export default function Bar() {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign='center'>{page}</Typography>
-                  </MenuItem>
+                  <Link href={page.path} key={page.path}>
+                    <MenuItem onClick={handleCloseNavMenu}>
+                      <Typography textAlign='center'>{page.name}</Typography>
+                    </MenuItem>
+                  </Link>
                 ))}
               </Menu>
             </Box>
