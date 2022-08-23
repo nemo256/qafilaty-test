@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client'
+import { gql, useMutation } from '@apollo/client'
 import * as React from 'react'
 import {
   Alert,
@@ -21,7 +21,6 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import { red } from '@mui/material/colors'
 import { experimentalStyled as styled } from '@mui/material/styles'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import ShareIcon from '@mui/icons-material/Share'
@@ -33,7 +32,6 @@ import CheckIcon from '@mui/icons-material/Check'
 
 // custom imports
 import ContainedButton from '../ContainedButton'
-import CardGrid from './CardGrid'
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -59,31 +57,76 @@ const style = {
 }
 
 
-export default function Main() {
+export default function AddUser() {
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  const GET_USERS = gql`
-    {
-      allUsers {
-        id
-        user_name
-        person {
+  // add a user
+  const ADD_USER = gql`
+    mutation AddUser (
+      $user_name: String!,
+      $password: String!,
+      $first_name: String,
+      $last_name: String,
+      $email: String,
+      $phone01: String,
+      $phone02: String,
+      $address: String,
+      $city: String
+    ) {
+      createUser (
+        content: {
+          user_name: $user_name,
+          password: $password,
+          person: {
+            first_name: $first_name,
+            last_name: $last_name,
+            email: $email,
+            phone01: $phone01,
+            phone02: $phone02,
+            address: $address,
+            city: $city
+          }
+        }
+      ) {
+        token
+        user {
           id
-          first_name
-          last_name
-          email
-          phone01
-          phone02
-          address
-          city
+          user_name
         }
       }
     }
   `
 
-  const { data } = useQuery(GET_USERS)
+  try {
+    const [addUser, { data, loading, err }] = useMutation(ADD_USER)
+  } catch (e) {
+    console.log(e)
+  }
+
+  const handleSubmit = (e) => {
+    event.preventDefault()
+    const formData = new FormData(e.currentTarget)
+
+    try {
+      addUser({
+        variables: {
+          username: formData.get('username'),
+          password: formData.get('password'),
+          first_name: formData.get('first_name'),
+          last_name: formData.get('last_name'),
+          email: formData.get('email'),
+          phone01: formData.get('phone01'),
+          phone02: formData.get('phone02'),
+          address: formData.get('address'),
+          city: formData.get('city'),
+        }
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   return (
     <>
@@ -104,7 +147,7 @@ export default function Main() {
         aria-labelledby='keep-mounted-modal-title'
         aria-describedby='keep-mounted-modal-description'
       >
-        <Box sx={style}>
+        <Box component='form' onSubmit={handleSubmit} sx={style}>
           <Stack direction='column' spacing={2} height='100%' justifyContent='space-between'>
             <Stack direction='column' spacing={2}>
               <Stack direction='row' spacing={1}>
@@ -123,17 +166,21 @@ export default function Main() {
               </Alert>
               <Stack direction='column' spacing={1}>
                 <Stack direction='row' spacing={1} justifyContent='space-evenly'>
-                  <TextField fullWidth size='small' id='outlined-basic' label='First Name' variant='outlined' />
-                  <TextField fullWidth size='small' id='outlined-basic' label='Last Name' variant='outlined' />
-                </Stack>
-                <TextField fullWidth size='small' id='outlined-basic' label='Email' variant='outlined' />
-                <Stack direction='row' spacing={1} justifyContent='space-evenly'>
-                  <TextField fullWidth size='small' id='outlined-basic' label='Phone Number' variant='outlined' />
-                  <TextField fullWidth size='small' id='outlined-basic' label='Phone Number (optional)' variant='outlined' />
+                  <TextField fullWidth name='username' size='small' id='outlined-basic' label='Username' variant='outlined' />
+                  <TextField fullWidth name='password' type='password' size='small' id='outlined-password-input' label='Password' variant='outlined' />
                 </Stack>
                 <Stack direction='row' spacing={1} justifyContent='space-evenly'>
-                  <TextField fullWidth size='small' id='outlined-basic' label='Address' variant='outlined' />
-                  <TextField fullWidth size='small' id='outlined-basic' label='City' variant='outlined' />
+                  <TextField fullWidth name='first_name' size='small' id='outlined-basic' label='First Name' variant='outlined' />
+                  <TextField fullWidth name='last_name' size='small' id='outlined-basic' label='Last Name' variant='outlined' />
+                </Stack>
+                <TextField fullWidth name='email' size='small' id='outlined-basic' label='Email' variant='outlined' />
+                <Stack direction='row' spacing={1} justifyContent='space-evenly'>
+                  <TextField fullWidth name='phone01' size='small' id='outlined-basic' label='Phone Number' variant='outlined' />
+                  <TextField fullWidth name='phone02' size='small' id='outlined-basic' label='Phone Number (optional)' variant='outlined' />
+                </Stack>
+                <Stack direction='row' spacing={1} justifyContent='space-evenly'>
+                  <TextField fullWidth name='address' size='small' id='outlined-basic' label='Address' variant='outlined' />
+                  <TextField fullWidth name='city' size='small' id='outlined-basic' label='City' variant='outlined' />
                 </Stack>
               </Stack>
             </Stack>
@@ -153,6 +200,7 @@ export default function Main() {
                   size='small'
                   variant='contained'
                   startIcon={<CheckIcon />}
+                  type='submit'
                 >
                   Confirm
                 </ContainedButton>
@@ -181,15 +229,6 @@ export default function Main() {
           </Stack>
         </Box>
       </Modal>
-      <Box sx={{ 
-          mt: 6,
-          mx: 'auto',
-          flexGrow: 1, 
-          width: '97%',
-        }}
-      >
-        { data && <CardGrid users={data} /> }
-      </Box>
     </>
   )
 }

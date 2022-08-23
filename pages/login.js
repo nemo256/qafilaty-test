@@ -54,9 +54,9 @@ export default function Login() {
 
   const [authUser, { data, loading, err }] = useMutation(AUTH_USER)
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (e) => {
     event.preventDefault()
-    const formData = new FormData(event.currentTarget)
+    const formData = new FormData(e.currentTarget)
 
     if (formData.get('email') == '' && formData.get('password') == '') {
       setError('Empty fields!')
