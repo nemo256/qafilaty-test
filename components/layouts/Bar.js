@@ -1,6 +1,7 @@
 import { styled, alpha } from '@mui/material/styles'
 import * as React from 'react'
 import { useRouter } from "next/router"
+import Router from "next/router"
 import {
   AppBar,
   Avatar,
@@ -170,6 +171,12 @@ export default function Bar() {
     setAnchorElUser(null)
   }
 
+  const handleLogout = () => {
+    setAnchorElUser(null)
+    localStorage.setItem('is_authenticated', false)
+    Router.push('/login')
+  }
+
   return (
     <Box
       sx={{ 
@@ -270,11 +277,9 @@ export default function Bar() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign='center'>{setting}</Typography>
-                  </MenuItem>
-                ))}
+                <MenuItem onClick={handleLogout}>
+                  <Typography textAlign='center'>Logout</Typography>
+                </MenuItem>
               </Menu>
             </Box>
           </Toolbar>
