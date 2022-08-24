@@ -39,6 +39,13 @@ const theme = createTheme()
 
 export default function Login() {
   const [error, setError] = React.useState('')
+  const [isAuthenticated, setIsAuthenticated] = React.useState(null)
+
+  React.useEffect(() => {
+    setIsAuthenticated(JSON.parse(localStorage.getItem('is_authenticated')))
+  }, [])
+
+  if (isAuthenticated == true) Router.push('/')
 
   const AUTH_USER = gql`
     mutation AuthUser ($email: String!, $password: String!) {
@@ -65,7 +72,6 @@ export default function Login() {
     } else if (formData.get('password') == '') {
       setError('Empty password!')
     } else {
-      console.log('here')
       try {
         authUser({
           variables: {
@@ -73,6 +79,7 @@ export default function Login() {
             password: formData.get('password')
           }
         })
+        localStorage.setItem('is_authenticated', true)
       } catch (e) {
         console.error(e)
       }

@@ -1,5 +1,6 @@
-import React from 'react'
+import * as React from 'react'
 import Head from 'next/head'
+import Router from 'next/router'
 import {
   Stack,
   Box
@@ -8,6 +9,14 @@ import Bar from './Bar'
 
 
 export default function Layout({ children }) {
+  const [isAuthenticated, setIsAuthenticated] = React.useState(null)
+
+  React.useEffect(() => {
+    setIsAuthenticated(JSON.parse(localStorage.getItem('is_authenticated')))
+  }, [])
+
+  if (isAuthenticated == false) Router.push('/login')
+
   return (
     <>
       <Head>

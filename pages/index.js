@@ -3,7 +3,7 @@ import CardGrid from '../components/home/CardGrid'
 import AddClient from '../components/home/AddClient'
 
 
-export default function Profiles() {
+export default function Index() {
   return (
     <>
       <Box 
