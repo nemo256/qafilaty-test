@@ -235,7 +235,7 @@ export default function AddUser() {
           </Stack>
         </Box>
       </Modal>
-      <Snackbar open={snackbarOpen} autoHideDuration={3000} onClose={handleSnackbarClose}>
+      <Snackbar open={snackbarOpen} autoHideDuration={4000} onClose={handleSnackbarClose}>
         <Alert onClose={handleSnackbarClose} severity={severity} sx={{ width: '100%' }}>
           { message }
         </Alert>

@@ -18,6 +18,7 @@ import {
   Grid,
   Paper,
   Stack,
+  Snackbar,
   TextField,
   Typography,
 } from '@mui/material'
@@ -61,6 +62,22 @@ export default function AddUser() {
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  // notification
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false)
+  const [message, setMessage] = React.useState('')
+  const [severity, setSeverity] = React.useState('info')
+
+  const handleSnackbarClick = () => {
+    setSnackbarOpen(true);
+  }
+
+  const handleSnackbarClose = (e, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+    setSnackbarOpen(false)
+  }
 
   // add a user
   const ADD_USER = gql`
@@ -120,6 +137,9 @@ export default function AddUser() {
         }
       })
       handleClose()
+      setMessage('Added successfully!')
+      setSeverity('success')
+      handleSnackbarClick()
     } catch (e) {
       console.log(e)
     }
@@ -230,6 +250,11 @@ export default function AddUser() {
           </Stack>
         </Box>
       </Modal>
+      <Snackbar open={snackbarOpen} autoHideDuration={4000} onClose={handleSnackbarClose}>
+        <Alert onClose={handleSnackbarClose} severity={severity} sx={{ width: '100%' }}>
+          { message }
+        </Alert>
+      </Snackbar>
     </>
   )
 }
