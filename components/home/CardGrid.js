@@ -15,6 +15,7 @@ import {
   IconButton,
   Stack,
   Chip,
+  Snackbar,
   TextField,
   Typography
 } from '@mui/material'
@@ -61,11 +62,6 @@ const colors = [
 export default function CardGrid() {
   const clients = Clients()
 
-  // for the modal (update client)
-  const [modalOpen, setModalOpen] = React.useState(false)
-  const handleModalOpen = () => setModalOpen(true)
-  const handleModalClose = () => setModalOpen(false)
-
   // update a client
   const UPDATE_CLIENT = gql`
     mutation UpdateClient (
@@ -106,12 +102,34 @@ export default function CardGrid() {
     }
   `
 
+
   const [updateClient, {}] = useMutation(UPDATE_CLIENT)
   const [deleteClient, {}] = useMutation(DELETE_CLIENT)
 
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [cc, setCc] = React.useState(null)
   const open = Boolean(anchorEl)
+
+  // for the modal (update client)
+  const [modalOpen, setModalOpen] = React.useState(false)
+  const handleModalOpen = () => setModalOpen(true)
+  const handleModalClose = () => setModalOpen(false)
+
+  // notification
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false)
+  const [message, setMessage] = React.useState('')
+  const [severity, setSeverity] = React.useState('info')
+
+  const handleSnackbarClick = () => {
+    setSnackbarOpen(true);
+  }
+
+  const handleSnackbarClose = (e, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+    setSnackbarOpen(false)
+  }
 
   const handleClick = (e, client) => {
     setAnchorEl(e.currentTarget)
@@ -142,6 +160,9 @@ export default function CardGrid() {
         }
       })
       handleClose()
+      setMessage('Updated successfully!')
+      setSeverity('success')
+      handleSnackbarClick()
     } catch (e) {
       console.log(e)
     }
@@ -155,10 +176,14 @@ export default function CardGrid() {
           id_person: cc.person.id
         }
       })
+    setMessage('Deleted successfully!')
+    setSeverity('error')
+    handleSnackbarClick()
     } catch (e) {
       console.log(e)
     }
   }
+
 
   return (
     <>
@@ -229,6 +254,11 @@ export default function CardGrid() {
           </Grid>
         ))}
       </Grid>
+      <Snackbar open={snackbarOpen} autoHideDuration={3000} onClose={handleSnackbarClose}>
+        <Alert onClose={handleSnackbarClose} severity={severity} sx={{ width: '100%' }}>
+          { message }
+        </Alert>
+      </Snackbar>
       { cc && (
         <Modal
           keepMounted
