@@ -60,12 +60,14 @@ const colors = [
 
 
 export default function CardGrid() {
-  const clients = Clients()
+  const users = Users()
 
-  // update a client
-  const UPDATE_CLIENT = gql`
-    mutation UpdateClient (
+  // update a user
+  const UPDATE_USER = gql`
+    mutation UpdateUser (
       $id_person: ID!,
+      $user_name: String,
+      $newPassword: String,
       $first_name: String,
       $last_name: String,
       $email: String,
@@ -74,9 +76,11 @@ export default function CardGrid() {
       $address: String,
       $city: String
     ) {
-      updateClient (
+      updateUser (
         id_person: $id_person,
         content: {
+          user_name: $user_name,
+          newPassword: $newPassword,
           person: {
             first_name: $first_name,
             last_name: $last_name,
@@ -93,24 +97,24 @@ export default function CardGrid() {
       }
   `
 
-  // delete a client
-  const DELETE_CLIENT = gql`
-    mutation DeleteClient ($id_person: ID!) {
-      deleteClient (id_person: $id_person) {
+  // delete a user
+  const DELETE_USER = gql`
+    mutation DeleteUser ($id_person: ID!) {
+      deleteUser (id_person: $id_person) {
         status
       }
     }
   `
 
 
-  const [updateClient, {}] = useMutation(UPDATE_CLIENT)
-  const [deleteClient, {}] = useMutation(DELETE_CLIENT)
+  const [updateUser, {}] = useMutation(UPDATE_USER)
+  const [deleteUser, {}] = useMutation(DELETE_USER)
 
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [cc, setCc] = React.useState(null)
   const open = Boolean(anchorEl)
 
-  // for the modal (update client)
+  // for the modal (update user)
   const [modalOpen, setModalOpen] = React.useState(false)
   const handleModalOpen = () => setModalOpen(true)
   const handleModalClose = () => setModalOpen(false)
@@ -131,9 +135,9 @@ export default function CardGrid() {
     setSnackbarOpen(false)
   }
 
-  const handleClick = (e, client) => {
+  const handleClick = (e, user) => {
     setAnchorEl(e.currentTarget)
-    setCc(client)
+    setCc(user)
   }
 
   const handleClose = () => {
@@ -147,9 +151,11 @@ export default function CardGrid() {
     console.log(cc.person.id)
 
     try {
-      updateClient({
+      updateUser({
         variables: {
           id_person: cc.person.id,
+          user_name: formData.get('user_name'),
+          newPassword: formData.get('newPassword'),
           first_name: formData.get('first_name'),
           last_name: formData.get('last_name'),
           email: formData.get('email'),
@@ -171,7 +177,7 @@ export default function CardGrid() {
   const handleDelete = () => {
     handleClose()
     try {
-      deleteClient({
+      deleteUser({
         variables: {
           id_person: cc.person.id
         }
@@ -193,8 +199,8 @@ export default function CardGrid() {
         spacing={2} 
         columns={{ xs: 1, sm: 8, md: 10, lg: 12 }}
       >
-        {clients && clients.allClients.map((client, id) => (
-          <Grid item xs={2} sm={4} md={4} key={client.id}>
+        {users && users.allUsers.map((user, id) => (
+          <Grid item xs={2} sm={4} md={4} key={user.id}>
             <Card elevation={0}>
               <CardHeader
                 avatar={
@@ -202,7 +208,7 @@ export default function CardGrid() {
                     sx={{ bgcolor: colors[Math.floor(Math.random()*colors.length)] }} 
                     aria-label='recipe'
                   >
-                    { client.person.last_name.charAt(0).toUpperCase() }
+                    { user.person.last_name.charAt(0).toUpperCase() }
                   </Avatar>
                 }
                 action={
@@ -213,7 +219,7 @@ export default function CardGrid() {
                       aria-controls={open ? 'long-menu' : undefined}
                       aria-expanded={open ? 'true' : undefined}
                       aria-haspopup="true"
-                      onClick={(e) => { handleClick(e, client) }}
+                      onClick={(e) => { handleClick(e, user) }}
                     >
                       <MoreVertIcon />
                     </IconButton>
@@ -236,8 +242,8 @@ export default function CardGrid() {
                     </Menu>
                   </>
                 }
-                title={ client.person.first_name + ' ' + client.person.last_name }
-                subheader={ client.person.email }
+                title={ user.person.first_name + ' ' + user.person.last_name }
+                subheader={ user.person.email }
               />
               <Stack
                 spacing={2}
@@ -247,8 +253,8 @@ export default function CardGrid() {
                   justifyContent: 'space-between',
                 }}
               >
-                <Chip label={ client.person.city } variant='outlined' />
-                <Chip label={ client.person.phone01 } variant='contained' />
+                <Chip label={ user.person.city } variant='outlined' />
+                <Chip label={ user.person.phone01 } variant='contained' />
               </Stack>
             </Card>
           </Grid>
@@ -273,7 +279,7 @@ export default function CardGrid() {
                 <Stack direction='row' spacing={1}>
                   <AddIcon /> 
                   <Typography>
-                    Update Client
+                    Update User
                   </Typography>
                 </Stack>
                 <Divider />
@@ -285,6 +291,11 @@ export default function CardGrid() {
                   </Typography>
                 </Alert>
                 <Stack direction='column' spacing={1}>
+                  <Stack direction='row' spacing={1} justifyContent='space-evenly'>
+                    <TextField fullWidth name='user_name' defaultValue={cc.user_name} size='small' id='outlined-basic' label='Username' variant='outlined' />
+                    <TextField fullWidth name='newPassword' type='password' size='small' id='outlined-password-input' label='Password' variant='outlined' />
+                  </Stack>
+                  <Divider my={4} />
                   <Stack direction='row' spacing={1} justifyContent='space-evenly'>
                     <TextField fullWidth name='first_name' defaultValue={cc.person.first_name} size='small' id='outlined-basic' label='First Name' variant='outlined' />
                     <TextField fullWidth name='last_name' defaultValue={cc.person.last_name} size='small' id='outlined-basic' label='Last Name' variant='outlined' />
@@ -347,109 +358,5 @@ export default function CardGrid() {
         </Modal>
       )}
     </>
-  )
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-import { gql, useQuery } from '@apollo/client'
-import * as React from 'react'
-import {
-  Grid,
-  Card,
-  CardHeader,
-  Avatar,
-  IconButton,
-  Stack,
-  Chip,
-  Typography
-} from '@mui/material'
-import { experimentalStyled as styled } from '@mui/material/styles'
-import MoreVertIcon from '@mui/icons-material/MoreVert'
-
-
-// picking a random color
-const colors = [
-  '#FFF38C',
-  '#E9DAC1',
-  '#FFB4B4',
-  '#CEE5D0',
-  '#DAE2B6',
-  '#B2C8DF',
-  '#FFDCAE',
-  '#F6C6EA',
-  '#FF8C8C',
-  '#B8F1B0',
-]
-
-
-export default function CardGrid() {
-  // fetch all users
-  const GET_USERS = gql`
-    {
-      allUsers {
-        id
-        user_name
-        person {
-          id
-          first_name
-          last_name
-          email
-          phone01
-          phone02
-          address
-          city
-        }
-      }
-    }
-  `
-
-  const { data } = useQuery(GET_USERS)
-
-  return (
-    <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={2} columns={{ xs: 1, sm: 8, md: 10, lg: 12 }}>
-
-      {data && data.allUsers.map((user) => (
-        <Grid item xs={2} sm={4} md={4} key={user.id}>
-          <Card elevation={0}>
-            <CardHeader
-              avatar={
-                <Avatar sx={{ bgcolor: colors[Math.floor(Math.random()*colors.length)] }} aria-label='recipe'>
-                  { user.person.last_name.charAt(0).toUpperCase() }
-                </Avatar>
-              }
-              action={
-                <IconButton aria-label='settings'>
-                  <MoreVertIcon />
-                </IconButton>
-              }
-              title={ user.person.first_name + ' ' + user.person.last_name }
-              subheader={ user.person.email }
-            />
-            <Stack
-              spacing={2}
-              direction='row'
-              sx={{
-                m: 1,
-                justifyContent: 'space-between',
-              }}
-            >
-              <Chip label={ user.person.city } variant='outlined' />
-              <Chip label={ user.person.phone01 } variant='contained' />
-            </Stack>
-          </Card>
-        </Grid>
-      ))}
-    </Grid>
   )
 }
