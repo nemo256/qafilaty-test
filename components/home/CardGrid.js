@@ -41,7 +41,7 @@ export default function CardGrid() {
 
   // delete a client
   const DELETE_CLIENT = gql`
-    mutation DeleteClient ($id_person: String!) {
+    mutation DeleteClient ($id_person: ID!) {
       deleteClient (id_person: $id_person) {
         status
       }
@@ -63,18 +63,19 @@ export default function CardGrid() {
     setAnchorEl(null)
   }
 
-  const handleUpdate = (client) => {
+  const handleUpdate = () => {
     handleClose()
     console.log(cc)
     //
   }
 
-  const handleDelete = (id) => {
+  const handleDelete = () => {
     handleClose()
+    console.log(cc.person.id)
     try {
       deleteClient({
         variables: {
-          id_person: id
+          id_person: cc.person.id
         }
       })
     } catch (e) {
@@ -126,7 +127,7 @@ export default function CardGrid() {
                     <MenuItem onClick={handleUpdate}>
                       Update
                     </MenuItem>
-                    <MenuItem onClick={() => { handleDelete(client.person.id) }}>
+                    <MenuItem onClick={handleDelete}>
                       Delete
                     </MenuItem>
                   </Menu>
