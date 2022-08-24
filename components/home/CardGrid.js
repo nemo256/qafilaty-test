@@ -50,29 +50,27 @@ export default function CardGrid() {
 
   const [deleteClient, { data, loading, error }] = useMutation(DELETE_CLIENT)
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [cc, setCc] = React.useState(null)
+  const open = Boolean(anchorEl)
 
-  const handleChange = (e) => {
-    setAuth(e.target.checked);
-  };
-
-  const handleMenu = (e) => {
-    setAnchorEl(e.currentTarget);
-  };
+  const handleClick = (e, client) => {
+    setAnchorEl(e.currentTarget)
+    setCc(client)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   const handleUpdate = (client) => {
     handleClose()
-    console.log(client)
+    console.log(cc)
     //
   }
 
   const handleDelete = (id) => {
     handleClose()
-    console.log(id)
     try {
       deleteClient({
         variables: {
@@ -85,46 +83,53 @@ export default function CardGrid() {
   }
 
   return (
-    <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={2} columns={{ xs: 1, sm: 8, md: 10, lg: 12 }}>
-
+    <Grid 
+      container 
+      pr={{ xs: 0, sm: 1, md: 0 }}
+      spacing={2} 
+      columns={{ xs: 1, sm: 8, md: 10, lg: 12 }}
+    >
       {clients && clients.allClients.map((client, id) => (
         <Grid item xs={2} sm={4} md={4} key={client.id}>
           <Card elevation={0}>
             <CardHeader
               avatar={
-                <Avatar sx={{ bgcolor: colors[Math.floor(Math.random()*colors.length)] }} aria-label='recipe'>
+                <Avatar 
+                  sx={{ bgcolor: colors[Math.floor(Math.random()*colors.length)] }} 
+                  aria-label='recipe'
+                >
                   { client.person.last_name.charAt(0).toUpperCase() }
                 </Avatar>
               }
               action={
                 <>
-                <IconButton
-                  aria-label='settings'
-                  aria-controls='menu'
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                >
-                  <MoreVertIcon />
-                </IconButton>
-                <Menu
-                  id="menu"
-                  anchorEl={anchorEl}
-                  elevation={1}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                >
-                  <MenuItem onClick={() => { handleUpdate(client) }}>Update</MenuItem>
-                  <MenuItem onClick={() => { handleDelete(client.person.id) }}>Delete</MenuItem>
-                </Menu>
+                  <IconButton
+                    aria-label="more"
+                    id="long-button"
+                    aria-controls={open ? 'long-menu' : undefined}
+                    aria-expanded={open ? 'true' : undefined}
+                    aria-haspopup="true"
+                    onClick={(e) => { handleClick(e, client) }}
+                  >
+                    <MoreVertIcon />
+                  </IconButton>
+                  <Menu
+                    elevation={1}
+                    id="long-menu"
+                    MenuListProps={{
+                      'aria-labelledby': 'long-button',
+                    }}
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                  >
+                    <MenuItem onClick={handleUpdate}>
+                      Update
+                    </MenuItem>
+                    <MenuItem onClick={() => { handleDelete(client.person.id) }}>
+                      Delete
+                    </MenuItem>
+                  </Menu>
                 </>
               }
               title={ client.person.first_name + ' ' + client.person.last_name }
