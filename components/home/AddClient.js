@@ -94,7 +94,7 @@ export default function AddUser() {
   const [addClient, { data, loading, err }] = useMutation(ADD_CLIENT)
 
   const handleSubmit = (e) => {
-    event.preventDefault()
+    e.preventDefault()
     const formData = new FormData(e.currentTarget)
 
     try {
