@@ -1,6 +1,8 @@
-import { gql, useQuery } from '@apollo/client'
+import { gql, useQuery, useMutation } from '@apollo/client'
 import * as React from 'react'
 import {
+  Menu,
+  MenuItem,
   Grid,
   Card,
   CardHeader,
@@ -12,6 +14,11 @@ import {
 } from '@mui/material'
 import { experimentalStyled as styled } from '@mui/material/styles'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
+
+// custom imports
+import Clients from './Clients'
+// import UpdateClient from './UpdateClient'
+// import DeleteClient from './DeleteClient'
 
 
 // picking a random color
@@ -25,36 +32,62 @@ const colors = [
   '#FFDCAE',
   '#F6C6EA',
   '#FF8C8C',
-  '#B8F1B0',
+  '#B8F1B0'
 ]
 
 
 export default function CardGrid() {
-  // fetch all users
-  const GET_CLIENTS = gql`
-    {
-      allClients {
-        id
-        person {
-          id
-          first_name
-          last_name
-          email
-          phone01
-          phone02
-          address
-          city
-        }
+  const clients = Clients()
+
+  // delete a client
+  const DELETE_CLIENT = gql`
+    mutation DeleteClient ($id_person: String!) {
+      deleteClient (id_person: $id_person) {
+        status
       }
     }
   `
 
-  const { data } = useQuery(GET_CLIENTS)
+  const [deleteClient, { data, loading, error }] = useMutation(DELETE_CLIENT)
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleChange = (e) => {
+    setAuth(e.target.checked);
+  };
+
+  const handleMenu = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleUpdate = (client) => {
+    handleClose()
+    console.log(client)
+    //
+  }
+
+  const handleDelete = (id) => {
+    handleClose()
+    console.log(id)
+    try {
+      deleteClient({
+        variables: {
+          id_person: id
+        }
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   return (
     <Grid container pr={{ xs: 0, sm: 1, md: 0 }} spacing={2} columns={{ xs: 1, sm: 8, md: 10, lg: 12 }}>
 
-      {data && data.allClients.map((client) => (
+      {clients && clients.allClients.map((client, id) => (
         <Grid item xs={2} sm={4} md={4} key={client.id}>
           <Card elevation={0}>
             <CardHeader
@@ -64,9 +97,35 @@ export default function CardGrid() {
                 </Avatar>
               }
               action={
-                <IconButton aria-label='settings'>
+                <>
+                <IconButton
+                  aria-label='settings'
+                  aria-controls='menu'
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                >
                   <MoreVertIcon />
                 </IconButton>
+                <Menu
+                  id="menu"
+                  anchorEl={anchorEl}
+                  elevation={1}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={() => { handleUpdate(client) }}>Update</MenuItem>
+                  <MenuItem onClick={() => { handleDelete(client.person.id) }}>Delete</MenuItem>
+                </Menu>
+                </>
               }
               title={ client.person.first_name + ' ' + client.person.last_name }
               subheader={ client.person.email }
